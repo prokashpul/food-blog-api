@@ -6,11 +6,13 @@ function loadApi() {
 }
 loadApi()
 
+function foodCard() {
+
+}
 
 function getFood(foods) {
-    console.log(foods)
     const foodContainer = document.getElementById('food');
-    for (const food of foods.meals) {
+    foods.meals.forEach(food => {
         const div = document.createElement('div');
         div.classList.add('col-md-4');
         div.innerHTML = ` <div class="card">
@@ -22,6 +24,5 @@ function getFood(foods) {
         </div>
     </div>`
         foodContainer.appendChild(div)
-        console.log(food.strMeal)
-    }
+    });
 }
