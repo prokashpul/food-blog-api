@@ -1,3 +1,28 @@
+//  search 
+document.getElementById('search').addEventListener("click", function() {
+    const searchValue = document.getElementById('search-value').value;
+    fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=' + searchValue)
+        .then(response => response.json())
+        .then(data => {
+            const foodContainer = document.getElementById('food-search');
+            data.meals.forEach(food => {
+                const div = document.createElement('div');
+                div.classList.add('col-md-4');
+                div.innerHTML = ` <div class="card">
+        <img src="${food.strMealThumb}" class="card-img-top " alt="${food.strMeal}" >
+        <div class="card-body">
+            <h5 class="card-title">${food.strMeal}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+    </div>`
+                console.log(foodContainer.appendChild(div))
+            });
+        })
+
+});
+
+
 // api request 
 function loadApi() {
     fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=')
